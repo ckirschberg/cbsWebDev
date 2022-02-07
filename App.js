@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { FlatList, Button, StyleSheet, Text, View } from 'react-native';
 import { TextInput } from 'react-native-web';
 import { Todo } from './Todo';
 
@@ -15,6 +15,12 @@ export default function App() {
     console.log(todos);
   }
 
+  const renderItem = ({ item }) => (
+    <View style={styles.item}>
+      <Text style={styles.title}>{item.text}</Text>
+    </View>
+  );
+
   return (
     <View style={styles.container}>
       <Text>Open up App.js to start working on your app! How is this all working?</Text>
@@ -23,6 +29,9 @@ export default function App() {
         onChangeText={newText => setText(newText)} style={styles.borderBlack} />
 
       <Button title="Add todo" onPress={handleAddTodo} />
+
+      <FlatList data={todos} renderItem={renderItem} />
+
       <StatusBar style="auto" />
     </View>
   );
@@ -37,5 +46,14 @@ const styles = StyleSheet.create({
   },
   borderBlack: {
     border: '1px solid #000'
-  }
+  },
+  item: {
+    backgroundColor: '#f9c2ff',
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
+  title: {
+    fontSize: 32,
+  },
 });
