@@ -1,5 +1,5 @@
 import { CHATROOMS } from "../../dummy.data";
-import { SUBTRACT, TOGGLE_HAPPY, ADD } from "../actions/ChatActions";
+import { SUBTRACT, TOGGLE_HAPPY, ADD, ADD_CHATROOM } from "../actions/ChatActions";
 
 const initialState = {
     chatrooms: CHATROOMS,
@@ -16,6 +16,9 @@ const chatReducer = (state = initialState, action) => {
             return { ...state, counter: state.counter - 1 }
         case TOGGLE_HAPPY:
             return { ...state, isHappy: !state.isHappy }
+        case ADD_CHATROOM:
+            console.log(action.payload); // Should print out the chatroomName
+
         // state.isHappy = !state.isHappy; // not allowed, it mutates the prior state
 
         default:
