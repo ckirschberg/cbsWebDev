@@ -1,16 +1,24 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, StyleSheet, TextInput, FlatList, TouchableOpacity } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import { subtract, toggleHappy, add } from '../store/actions/ChatActions';
-
-
+import { subtract, toggleHappy, add, addChatroom } from '../store/actions/ChatActions';
+import { useState } from 'react'
 
 const Screen1 = ({ navigation }) => {
+    const [text, onChangeText] = useState('');
+
     const isHappy = useSelector(state => state.chat.isHappy); // subscribing to the store's chat slice/part
     const dispatch = useDispatch();
     const numberOfIcecreams = useSelector(state => state.chat.counter)
     const chatrooms = useSelector(state => state.chat.chatrooms);
-    console.log(chatrooms);
+
+
+    const renderItem = ({ item }) => (
+        <TouchableOpacity>
+            <Text>{item.title}</Text>
+        </TouchableOpacity>
+    );
+
 
     return (
         <View>
@@ -22,8 +30,27 @@ const Screen1 = ({ navigation }) => {
 
             <Button title="Give Icecream" onPress={() => dispatch(add())} />
             <Button title="Steal Icecream" onPress={() => dispatch(subtract())} />
+
+            <TextInput placeholder="Chatroom name"
+                style={styles.input}
+                onChangeText={onChangeText}
+                value={text}
+                keyExtractor={item => item.title} />
+
+            <Button title='Add chatroom' onPress={() => dispatch(addChatroom(text))} />
+
+            <FlatList data={chatrooms} renderItem={renderItem} />
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    input: {
+        height: 40,
+        margin: 12,
+        borderWidth: 1,
+        padding: 10,
+    },
+});
 
 export default Screen1;
