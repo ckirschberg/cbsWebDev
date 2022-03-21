@@ -10,20 +10,20 @@ import SettingsScreen from "./screens/SettingsScreen";
 import MenuScreen from "./screens/MenuScreen";
 import DiscoverScreen from "./screens/DiscoverScreen";
 
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import chatReducer from './store/reducers/ChatReducer';
 import { Provider } from 'react-redux';
+import ReduxThunk from 'redux-thunk';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
-
 
 const rootReducer = combineReducers({
   chat: chatReducer,
   // posts: postReducer,
   // events: eventReducer
 })
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 
 export default function App() {
   return (
