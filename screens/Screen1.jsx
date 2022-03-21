@@ -1,7 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { View, Text, Button, StyleSheet, TextInput, FlatList, TouchableOpacity } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import { subtract, toggleHappy, add, addChatroom } from '../store/actions/ChatActions';
+import { subtract, toggleHappy, add, addChatroom, deleteChatroom } from '../store/actions/ChatActions';
 import { useState } from 'react'
 
 const Screen1 = ({ navigation }) => {
@@ -16,6 +16,7 @@ const Screen1 = ({ navigation }) => {
     const renderItem = ({ item }) => (
         <TouchableOpacity>
             <Text>{item.title}</Text>
+            <Button title="Delete this chatroom" onPress={() => dispatch(deleteChatroom(item.title))} />
         </TouchableOpacity>
     );
 
