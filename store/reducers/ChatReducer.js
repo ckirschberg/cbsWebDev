@@ -1,6 +1,6 @@
 import { CHATROOMS } from "../../dummy.data";
 import { Chatroom } from "../../entities/Chatroom";
-import { SUBTRACT, TOGGLE_HAPPY, ADD, ADD_CHATROOM } from "../actions/ChatActions";
+import { SUBTRACT, TOGGLE_HAPPY, ADD, ADD_CHATROOM, DELETE_CHATROOM } from "../actions/ChatActions";
 
 const initialState = {
     chatrooms: CHATROOMS,
@@ -24,6 +24,10 @@ const chatReducer = (state = initialState, action) => {
             const chatroom = new Chatroom(action.payload, [], '');
             const newChatroomArray = [...state.chatrooms, chatroom];
             return { ...state, chatrooms: newChatroomArray };
+
+        case DELETE_CHATROOM:
+            console.log(action.payload);
+
 
         //            return {...state, chatrooms: [...state.chatrooms, {title: action.payload}]}
 
