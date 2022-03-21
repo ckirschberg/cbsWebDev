@@ -27,6 +27,11 @@ const chatReducer = (state = initialState, action) => {
 
         case DELETE_CHATROOM:
             console.log(action.payload);
+            return {
+                ...state, chatrooms:
+                    state.chatrooms.filter(chatroom => chatroom.title !== action.payload)
+            }
+
 
 
         //            return {...state, chatrooms: [...state.chatrooms, {title: action.payload}]}
