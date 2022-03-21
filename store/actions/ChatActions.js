@@ -26,6 +26,8 @@ export const deleteChatroom = (title) => {
 
 export const signup = (email, password) => {
     return async dispatch => {
+        console.log("hi");
+
         const response = await fetch('some url', {
             method: 'POST',
             headers: {

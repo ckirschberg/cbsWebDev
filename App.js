@@ -9,6 +9,7 @@ import HomeScreen from "./screens/HomeScreen";
 import SettingsScreen from "./screens/SettingsScreen";
 import MenuScreen from "./screens/MenuScreen";
 import DiscoverScreen from "./screens/DiscoverScreen";
+import SignupScreen from "./screens/SignupScreen";
 
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import chatReducer from './store/reducers/ChatReducer';
@@ -31,7 +32,7 @@ export default function App() {
 
       <NavigationContainer>
         <Tab.Navigator>
-          <Tab.Screen name="Home" component={HomeScreen} />
+          <Tab.Screen name="Home" component={SignupScreen} />
           <Tab.Screen name="Discover" component={DiscoverScreen} />
           <Tab.Screen name="Chat" component={ChatStack} />
           <Tab.Screen name="Menu" component={MenuScreen} />
