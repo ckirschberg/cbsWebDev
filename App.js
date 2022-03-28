@@ -15,13 +15,14 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import chatReducer from './store/reducers/ChatReducer';
 import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
+import userReducer from "./store/reducers/UserReducer";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const rootReducer = combineReducers({
   chat: chatReducer,
-  // posts: postReducer,
+  user: userReducer,
   // events: eventReducer
 })
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
