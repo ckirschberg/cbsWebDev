@@ -1,3 +1,5 @@
+import { Chatroom } from "../../entities/Chatroom";
+
 export const TOGGLE_HAPPY = 'TOGGLE_HAPPY';
 export const ADD = 'ADD';
 export const SUBTRACT = 'SUBTRACT';
@@ -31,19 +33,17 @@ export const addChatroom = (chatroomName) => {
             body: JSON.stringify({ //javascript to json
                 //key value pairs of data you want to send to server
                 // ...
-
-                returnSecureToken: true
+                chatroomName
             })
         });
 
-        // console.log(await response.json());
 
         const data = await response.json(); // json to javascript
         console.log(data);
         if (!response.ok) {
             //There was a problem..
         } else {
-            dispatch({ type: SIGNUP, payload: '' })
+            dispatch({ type: ADD_CHATROOM, payload: { chatroomName, id: data.name } })
         }
     };
 };

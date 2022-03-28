@@ -12,6 +12,7 @@ const Screen1 = ({ navigation }) => {
     const numberOfIcecreams = useSelector(state => state.chat.counter)
     const chatrooms = useSelector(state => state.chat.chatrooms);
 
+    console.log("chatrooms", chatrooms);
 
     const renderItem = ({ item }) => (
         <TouchableOpacity>

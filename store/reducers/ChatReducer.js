@@ -3,7 +3,7 @@ import { Chatroom } from "../../entities/Chatroom";
 import { SUBTRACT, TOGGLE_HAPPY, ADD, ADD_CHATROOM, DELETE_CHATROOM } from "../actions/ChatActions";
 
 const initialState = {
-    chatrooms: CHATROOMS,
+    chatrooms: [],
     counter: 0,
     isHappy: false,
     name: 'Andre'
@@ -21,7 +21,9 @@ const chatReducer = (state = initialState, action) => {
             console.log(action.payload); // Should print out the chatroomName
             //state.chatrooms.push(chatroom); // mutate chatrroms array! Not Allowed!
 
-            const chatroom = new Chatroom(action.payload, [], '');
+            const chatroom = new Chatroom(action.payload.chatroomName, [], '', action.payload.id);
+            // const chatroom = { title: action.payload, chatmessages: [], imageUrl: ''}
+
             const newChatroomArray = [...state.chatrooms, chatroom];
             return { ...state, chatrooms: newChatroomArray };
 
