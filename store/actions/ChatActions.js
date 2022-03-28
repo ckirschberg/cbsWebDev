@@ -42,12 +42,11 @@ export const fetchChatrooms = () => {
 
             let chatrooms = [];
             for (const key in data) {
-                let chatroom = new Chatroom(data[key].chatroomName, [], '', blabla)
-                chatrooms.push()
-                // console.log(data[key].name)​
+                let chatroom = new Chatroom(data[key].chatroomName, [], '', key)
+                chatrooms.push(chatroom)
             }
 
-            dispatch({ type: FETCH_CHATROOMS, payload: '' })
+            dispatch({ type: FETCH_CHATROOMS, payload: chatrooms })
         }
     };
 }
@@ -82,7 +81,28 @@ export const addChatroom = (chatroomName) => {
     };
 };
 
-export const deleteChatroom = (title) => {
-    return { type: DELETE_CHATROOM, payload: title }
+export const deleteChatroom = (id) => {
+    return async (dispatch, getState) => {
+        const idToken = getState().user.idToken
+
+        const response = await fetch(
+            'https://cbsstudentsweb-default-rtdb.europe-west1.firebasedatabase.app/chatrooms/' + id + '.json/?auth='
+            + idToken, {
+
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
+
+
+        const data = await response.json(); // json to javascript
+        console.log(data);
+        if (!response.ok) {
+            //There was a problem..
+        } else {
+            dispatch({ type: DELETE_CHATROOM, payload: id })
+        }
+    };
 }
 

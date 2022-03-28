@@ -1,6 +1,6 @@
 import { CHATROOMS } from "../../dummy.data";
 import { Chatroom } from "../../entities/Chatroom";
-import { SUBTRACT, TOGGLE_HAPPY, ADD, ADD_CHATROOM, DELETE_CHATROOM } from "../actions/ChatActions";
+import { SUBTRACT, TOGGLE_HAPPY, ADD, ADD_CHATROOM, DELETE_CHATROOM, FETCH_CHATROOMS } from "../actions/ChatActions";
 
 const initialState = {
     chatrooms: [],
@@ -17,6 +17,9 @@ const chatReducer = (state = initialState, action) => {
             return { ...state, counter: state.counter - 1 }
         case TOGGLE_HAPPY:
             return { ...state, isHappy: !state.isHappy }
+        case FETCH_CHATROOMS:
+            return { ...state, chatrooms: action.payload }
+
         case ADD_CHATROOM:
             console.log(action.payload); // Should print out the chatroomName
             //state.chatrooms.push(chatroom); // mutate chatrroms array! Not Allowed!
@@ -31,7 +34,7 @@ const chatReducer = (state = initialState, action) => {
             console.log(action.payload);
             return {
                 ...state, chatrooms:
-                    state.chatrooms.filter(chatroom => chatroom.title !== action.payload)
+                    state.chatrooms.filter(chatroom => chatroom.id !== action.payload)
             }
 
 
