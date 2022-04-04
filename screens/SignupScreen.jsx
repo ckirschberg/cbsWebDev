@@ -1,17 +1,36 @@
 import { View, Text, TextInput, Button } from 'react-native';
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { signup } from './../store/actions/UserActions'
+import { restoreUser, signup } from './../store/actions/UserActions'
+import * as SecureStore from 'expo-secure-store';
 
 const SignupScreen = ({ navigation }) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const dispatch = useDispatch()
 
-    const token = useSelector(state => state.user.idToken)
-    const emailTest = useSelector(state => state.user.email)
+    // const token = useSelector(state => state.user.idToken)
+    // const emailTest = useSelector(state => state.user.email)
     // console.log(token);
     // console.log(emailTest);
+
+    async function load() {
+        let emailFromSecureStore = await SecureStore.getItemAsync('email');
+        let tokenFromSecureStore = await SecureStore.getItemAsync('token');
+        if (emailFromSecureStore && tokenFromSecureStore) {
+            console.log("success", emailFromSecureStore);
+
+            dispatch(restoreUser(emailFromSecureStore, tokenFromSecureStore));
+
+        } else {
+            console.log("failure");
+        }
+    }
+
+    useEffect(() => {
+        //load();
+    }, [])
+
 
     return (
         <View>

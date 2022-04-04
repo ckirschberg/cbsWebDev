@@ -1,4 +1,13 @@
+import * as SecureStore from 'expo-secure-store';
+
 export const SIGNUP = 'SIGNUP';
+export const RESTORE_USER = 'RESTORE_USER';
+
+
+export const restoreUser = (email, token) => {
+    return { type: RESTORE_USER, payload: { email, idToken: token } };
+};
+
 
 export const signup = (email, password) => {
     return async dispatch => {
@@ -23,6 +32,8 @@ export const signup = (email, password) => {
         if (!response.ok) {
             //There was a problem..
         } else {
+            await SecureStore.setItemAsync('email', data.email);
+            await SecureStore.setItemAsync('token', data.idToken);
             dispatch({ type: SIGNUP, payload: { email: data.email, idToken: data.idToken } })
         }
     };
