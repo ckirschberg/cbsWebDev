@@ -25,6 +25,7 @@ const SignupScreen = ({ navigation }) => {
                 value={password} />
 
             <Button title="Signup" onPress={() => dispatch(signup(email, password))} />
+            <Button title="Login Instead" onPress={() => navigation.navigate("Login")} />
         </View>
     );
 }

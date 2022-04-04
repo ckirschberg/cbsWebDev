@@ -5,9 +5,12 @@ import Screen1 from "./../screens/Screen1";
 import Screen2 from "./../screens/Screen2";
 import Screen3 from "./../screens/Screen3";
 import MenuScreen from "./../screens/MenuScreen";
+import HomeScreen from "./../screens/HomeScreen";
 import DiscoverScreen from "./../screens/DiscoverScreen";
 import SignupScreen from "./../screens/SignupScreen";
+import LoginScreen from "./../screens/LoginScreen";
 import { NavigationContainer } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
 
 
 const Stack = createNativeStackNavigator();
@@ -15,21 +18,25 @@ const Tab = createBottomTabNavigator();
 
 
 const NavigationComponent = ({ navigation }) => {
-    const myVariable = 1;
+    const token = useSelector(state => state.user.idToken)
+
     return (
         <NavigationContainer >
-            {"is the user logged in" ? (
+            {token !== undefined ? (
                 // Show the app with all navigation
-            ): (
-                    // show a stack navigator with only signup and login screens.
-                )}
-
-            <Tab.Navigator>
-                <Tab.Screen name="Home" component={SignupScreen} />
-                <Tab.Screen name="Discover" component={DiscoverScreen} />
-                <Tab.Screen name="Chat" component={ChatStack} />
-                <Tab.Screen name="Menu" component={MenuScreen} />
-            </Tab.Navigator>
+                <Tab.Navigator>
+                    <Tab.Screen name="Home" component={HomeScreen} />
+                    <Tab.Screen name="Discover" component={DiscoverScreen} />
+                    <Tab.Screen name="Chat" component={ChatStack} />
+                    <Tab.Screen name="Menu" component={MenuScreen} />
+                </Tab.Navigator>
+            ) : (
+                // show a stack navigator with only signup and login screens.
+                <Stack.Navigator>
+                    <Stack.Screen name="Signup" component={SignupScreen} />
+                    <Stack.Screen name="Login" component={LoginScreen} />
+                </Stack.Navigator>
+            )}
         </NavigationContainer >
     );
 }
