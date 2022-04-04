@@ -53,6 +53,7 @@ export const fetchChatrooms = () => {
 
 export const addChatroom = (chatroomName: string) => {
     return async (dispatch: any, getState: any) => {
+        // const msg: Chatmessage = new Chatmessage('Hello', new Date()); //example of using typescript
         const idToken = getState().user.idToken
 
         const response = await fetch(

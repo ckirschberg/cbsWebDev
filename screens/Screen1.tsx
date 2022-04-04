@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
 import { Button, FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../App';
 import { add, addChatroom, deleteChatroom, fetchChatrooms, subtract, toggleHappy } from '../store/actions/ChatActions';
 
-const Screen1 = ({ navigation }) => {
+const Screen1 = ({ navigation }: { navigation: any }) => {
     const [text, onChangeText] = useState('');
 
-    const isHappy = useSelector(state => state.chat.isHappy); // subscribing to the store's chat slice/part
+    const isHappy = useSelector((state: RootState) => state.chat.isHappy); // subscribing to the store's chat slice/part
     const dispatch = useDispatch();
-    const numberOfIcecreams = useSelector(state => state.chat.counter)
-    const chatrooms = useSelector(state => state.chat.chatrooms);
+    const numberOfIcecreams = useSelector((state: RootState) => state.chat.counter)
+    const chatrooms = useSelector((state: RootState) => state.chat.chatrooms);
 
     useEffect(() => {
         dispatch(fetchChatrooms())
@@ -17,7 +18,7 @@ const Screen1 = ({ navigation }) => {
 
     console.log("chatrooms", chatrooms);
 
-    const renderItem = ({ item }) => (
+    const renderItem = ({ item }: { item: any }) => (
         <TouchableOpacity>
             <Text>{item.title}</Text>
             <Button title="Delete this chatroom" onPress={() => dispatch(deleteChatroom(item.id))} />
@@ -39,8 +40,7 @@ const Screen1 = ({ navigation }) => {
             <TextInput placeholder="Chatroom name"
                 style={styles.input}
                 onChangeText={onChangeText}
-                value={text}
-                keyExtractor={item => item.title} />
+                value={text} />
 
             <Button title='Add chatroom' onPress={() => dispatch(addChatroom(text))} />
 

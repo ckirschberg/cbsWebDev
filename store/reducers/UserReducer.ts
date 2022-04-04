@@ -1,14 +1,22 @@
-import { CHATROOMS } from "../../dummy.data";
-import { Chatroom } from "../../entities/Chatroom";
-import { SUBTRACT, TOGGLE_HAPPY, ADD, ADD_CHATROOM, DELETE_CHATROOM } from "../actions/ChatActions";
 import { RESTORE_USER, SIGNUP } from "../actions/UserActions";
 
-const initialState = {
+
+export interface UserState {
+    idToken: string | undefined;
+    email: string | undefined;
+}
+
+const initialState: UserState = {
     idToken: undefined,
     email: undefined
 };
 
-const userReducer = (state = initialState, action) => {
+export interface Action {
+    type: string;
+    payload: any;
+}
+
+const userReducer = (state: UserState = initialState, action: Action) => {
     switch (action.type) {
         case SIGNUP:
             return { ...state, idToken: action.payload.idToken, email: action.payload.email }
