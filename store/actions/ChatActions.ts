@@ -20,7 +20,7 @@ export const subtract = () => {
 };
 
 export const fetchChatrooms = () => {
-    return async (dispatch, getState) => {
+    return async (dispatch: any, getState: any) => {
         const idToken = getState().user.idToken
 
         const response = await fetch(
@@ -51,8 +51,8 @@ export const fetchChatrooms = () => {
     };
 }
 
-export const addChatroom = (chatroomName) => {
-    return async (dispatch, getState) => {
+export const addChatroom = (chatroomName: string) => {
+    return async (dispatch: any, getState: any) => {
         const idToken = getState().user.idToken
 
         const response = await fetch(
@@ -81,9 +81,9 @@ export const addChatroom = (chatroomName) => {
     };
 };
 
-export const deleteChatroom = (id) => {
-    return async (dispatch, getState) => {
-        const idToken = getState().user.idToken
+export const deleteChatroom = (id: string) => {
+    return async (dispatch: any, getState: any) => {
+        let idToken: string = getState().user.idToken
 
         const response = await fetch(
             'https://cbsstudentsweb-default-rtdb.europe-west1.firebasedatabase.app/chatrooms/' + id + '.json/?auth='

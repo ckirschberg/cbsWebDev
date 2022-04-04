@@ -1,8 +1,7 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { View, Text, Button, StyleSheet, TextInput, FlatList, TouchableOpacity } from 'react-native';
-import { useSelector, useDispatch } from 'react-redux';
-import { subtract, toggleHappy, add, addChatroom, deleteChatroom, fetchChatrooms } from '../store/actions/ChatActions';
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react';
+import { Button, FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { add, addChatroom, deleteChatroom, fetchChatrooms, subtract, toggleHappy } from '../store/actions/ChatActions';
 
 const Screen1 = ({ navigation }) => {
     const [text, onChangeText] = useState('');
