@@ -28,7 +28,7 @@ const SignupScreen = ({ navigation }) => {
     }
 
     useEffect(() => {
-        //load();
+        //load(); // uncomment to read from secure store
     }, [])
 
 
