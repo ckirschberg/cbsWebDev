@@ -4,11 +4,13 @@ import { RESTORE_USER, SIGNUP } from "../actions/UserActions";
 export interface UserState {
     idToken: string | undefined;
     email: string | undefined;
+    username: string | undefined;
 }
 
 const initialState: UserState = {
     idToken: undefined,
-    email: undefined
+    email: undefined,
+    username: 'Test'
 };
 
 export interface Action {

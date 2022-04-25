@@ -9,6 +9,8 @@ import HomeScreen from "./../screens/HomeScreen";
 import DiscoverScreen from "./../screens/DiscoverScreen";
 import SignupScreen from "./../screens/SignupScreen";
 import LoginScreen from "./../screens/LoginScreen";
+import ProfileScreen from "./../screens/ProfileScreen";
+import EditProfileScreen from "./../screens/EditProfileScreen";
 import { NavigationContainer } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 
@@ -28,7 +30,7 @@ const NavigationComponent = ({ navigation }) => {
                     <Tab.Screen name="Home" component={HomeScreen} />
                     <Tab.Screen name="Discover" component={DiscoverScreen} />
                     <Tab.Screen name="Chat" component={ChatStack} />
-                    <Tab.Screen name="Menu" component={MenuScreen} />
+                    <Tab.Screen name="Menu" component={MenuStack} />
                 </Tab.Navigator>
             ) : (
                 // show a stack navigator with only signup and login screens.
@@ -39,6 +41,16 @@ const NavigationComponent = ({ navigation }) => {
             )}
         </NavigationContainer >
     );
+}
+
+
+function MenuStack() {
+    return (
+        <Stack.Navigator>
+            <Stack.Screen name="Profile" component={ProfileScreen}></Stack.Screen>
+            <Stack.Screen name="EditProfile" component={EditProfileScreen}></Stack.Screen>
+        </Stack.Navigator>
+    )
 }
 
 function ChatStack() {
