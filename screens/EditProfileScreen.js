@@ -1,13 +1,15 @@
-import { View, Text } from 'react-native';
+import { View, Text, Button } from 'react-native';
 import { useSelector } from 'react-redux';
 import Input from './../components/Input'
+import { useState } from 'react';
 
 const EditProfileScreen = ({ navigation }) => {
     const username = useSelector(state => state.user.username);
+    const [validUsername, setValidUsername] = useState(username !== '')
 
     const save = () => {
         // ** if the "form" is valid ** {
-        // save data
+        // save data - we need access to text here...
         //} else {
         // display error message
         //}
@@ -19,7 +21,13 @@ const EditProfileScreen = ({ navigation }) => {
         <View>
             <Text>I am EditProfileScreen</Text>
 
-            <Input label="Username" inputValue={username} error="Username cannot be empty." />
+            <Input
+                label="Username"
+                inputValue={username}
+                error="Username cannot be empty."
+                valid={validUsername}
+                setValid={setValidUsername}
+            />
             <Input label="Hi" inputValue="" error="Cannot be empty" />
 
             <Button title="Save" onPress={save} />

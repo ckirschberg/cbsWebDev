@@ -3,16 +3,16 @@ import { useState } from 'react';
 
 const Input = props => {
     const [text, setText] = useState(props.inputValue)
-    const [valid, setValid] = useState(props.inputValue !== '')
+
     const [entered, setEntered] = useState(false);
 
     const handleChangeText = (text) => {
         setEntered(true);
         setText(text);
         if (text === '') {
-            setValid(false);
+            props.setValid(false);
         } else {
-            setValid(true);
+            props.setValid(true);
         }
     }
     const handleOnBlur = () => {
@@ -23,7 +23,7 @@ const Input = props => {
         <View>
             <Text>{props.label}</Text>
             <TextInput value={text} onChangeText={handleChangeText} onBlur={handleOnBlur} />
-            {!valid && entered ? <Text>{props.error}</Text> : <></>}
+            {!props.valid && entered ? <Text>{props.error}</Text> : <></>}
         </View>
     );
 }
