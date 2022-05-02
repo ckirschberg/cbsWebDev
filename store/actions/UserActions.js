@@ -1,7 +1,14 @@
 import * as SecureStore from 'expo-secure-store';
 
 export const SIGNUP = 'SIGNUP';
+export const LOGOUT = 'LOGOUT';
 export const RESTORE_USER = 'RESTORE_USER';
+
+export const logout = () => {
+    SecureStore.deleteItemAsync('email');
+    SecureStore.deleteItemAsync('token');
+    return { type: LOGOUT }
+}
 
 
 export const restoreUser = (email, token) => {
