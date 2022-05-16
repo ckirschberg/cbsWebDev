@@ -1,4 +1,4 @@
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, Alert } from 'react-native';
 import { useSelector } from 'react-redux';
 import Input from './../components/Input'
 import { useState } from 'react';
@@ -13,7 +13,9 @@ const EditProfileScreen = ({ navigation }) => {
         //} else {
         // display error message
         //}
-
+        if (username & validUsername) {
+            Alert.alert("hello")
+        }
 
     }
 
@@ -28,7 +30,9 @@ const EditProfileScreen = ({ navigation }) => {
                 valid={validUsername}
                 setValid={setValidUsername}
             />
-            <Input label="Hi" inputValue="" error="Cannot be empty" />
+            <Input 
+                label="Password" 
+                error="Password cannot be empty" />
 
             <Button title="Save" onPress={save} />
         </View>

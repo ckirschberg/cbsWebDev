@@ -24,7 +24,7 @@ export const fetchChatrooms = () => {
         const idToken = getState().user.idToken
 
         const response = await fetch(
-            'https://cbsstudentsweb-default-rtdb.europe-west1.firebasedatabase.app/chatrooms.json?auth='
+            'https://reactclass-83590-default-rtdb.europe-west1.firebasedatabase.app/chatrooms.json?auth='
             + idToken, {
 
             method: 'GET',
@@ -57,7 +57,7 @@ export const addChatroom = (chatroomName: string) => {
         const idToken = getState().user.idToken
 
         const response = await fetch(
-            'https://cbsstudentsweb-default-rtdb.europe-west1.firebasedatabase.app/chatrooms.json?auth='
+            'https://reactclass-83590-default-rtdb.europe-west1.firebasedatabase.app/chatrooms.json?auth='
             + idToken, {
 
             method: 'POST',
@@ -87,7 +87,7 @@ export const deleteChatroom = (id: string) => {
         let idToken: string = getState().user.idToken
 
         const response = await fetch(
-            'https://cbsstudentsweb-default-rtdb.europe-west1.firebasedatabase.app/chatrooms/' + id + '.json/?auth='
+            'https://reactclass-83590-default-rtdb.europe-west1.firebasedatabase.app/chatrooms/' + id + '.json/?auth='
             + idToken, {
 
             method: 'DELETE',

@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import Screen1 from "./../screens/Screen1";
 import Screen2 from "./../screens/Screen2";
 import Screen3 from "./../screens/Screen3";
@@ -11,6 +11,7 @@ import SignupScreen from "./../screens/SignupScreen";
 import LoginScreen from "./../screens/LoginScreen";
 import ProfileScreen from "./../screens/ProfileScreen";
 import EditProfileScreen from "./../screens/EditProfileScreen";
+import EventScreen from "./../screens/EventScreen";
 import { NavigationContainer } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 
@@ -21,14 +22,14 @@ const Tab = createBottomTabNavigator();
 
 const NavigationComponent = ({ navigation }) => {
     const token = useSelector(state => state.user.idToken)
-
     return (
         <NavigationContainer >
+            {/* this is imporatin */}
             {token !== undefined ? (
                 // Show the app with all navigation
                 <Tab.Navigator>
                     <Tab.Screen name="Home" component={HomeScreen} />
-                    <Tab.Screen name="Discover" component={DiscoverScreen} />
+                    <Tab.Screen name="Discover" component={DiscoverScreen}/>
                     <Tab.Screen name="Chat" component={ChatStack} />
                     <Tab.Screen name="Menu" component={MenuStack} />
                 </Tab.Navigator>
@@ -63,6 +64,13 @@ function ChatStack() {
     );
 }
 
-
+// function DiscoverStack() {
+//     return (
+//         <Stack.Navigator>
+//             <Stack.Screen name="Screen3" component={DiscoverScreen}></Stack.Screen>
+//             <Stack.Screen name="Events" component={EventScreen}></Stack.Screen>
+//         </Stack.Navigator>
+//     );
+// }
 
 export default NavigationComponent;

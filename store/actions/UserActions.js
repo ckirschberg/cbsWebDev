@@ -1,7 +1,14 @@
 import * as SecureStore from 'expo-secure-store';
 
 export const SIGNUP = 'SIGNUP';
+export const LOGOUT = 'LOGOUT';
 export const RESTORE_USER = 'RESTORE_USER';
+
+export const logout = () => {
+    SecureStore.deleteItemAsync('email');
+    SecureStore.deleteItemAsync('token');
+    return { type: LOGOUT }
+}
 
 
 export const restoreUser = (email, token) => {
@@ -11,7 +18,7 @@ export const restoreUser = (email, token) => {
 
 export const signup = (email, password) => {
     return async dispatch => {
-        const response = await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAUKPbkzwEdHtiluNX-HbofTDU7GDIQzZI', {
+        const response = await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyD-AEZQF5g4GW5FeFcPdIfbaXUg2b5IGOI', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
