@@ -25,7 +25,7 @@ const NavigationComponent = ({ navigation }) => {
     return (
         <NavigationContainer >
             {/* this is imporatin */}
-            {token !== undefined ? (
+            {token == undefined ? (
                 // Show the app with all navigation
                 <Tab.Navigator>
                     <Tab.Screen name="Home" component={HomeScreen} />
