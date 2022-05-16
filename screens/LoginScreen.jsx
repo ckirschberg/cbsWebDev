@@ -6,6 +6,7 @@ const LoginScreen = ({ navigation }) => {
         <View style={styles.ViewStyle}>
             <Text>I am Login!</Text>
             <Text>hello</Text>
+            <Text>Testing out the git</Text>
         </View>
     );
 }
