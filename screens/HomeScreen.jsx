@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, Pressable, Alert, ScrollView } from 'react-native';
 
 const HomeScreen = ({ navigation }) => {
-// testing git 
+// testing git 2
     return (
         <View style={styles.ViewStyle}>
             <Text style={styles.HelloText}>Welcome Back</Text>
