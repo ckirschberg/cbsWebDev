@@ -1,4 +1,4 @@
-import { View, Text, Button, Alert } from 'react-native';
+import { View, Text, Button, Alert, StyleSheet } from 'react-native';
 import { useSelector } from 'react-redux';
 import Input from './../components/Input'
 import { useState } from 'react';
@@ -20,7 +20,7 @@ const EditProfileScreen = ({ navigation }) => {
     }
 
     return (
-        <View>
+        <View style={styles.container}>
             <Text>I am EditProfileScreen</Text>
 
             <Input
@@ -34,9 +34,16 @@ const EditProfileScreen = ({ navigation }) => {
                 label="Password" 
                 error="Password cannot be empty" />
 
-            <Button title="Save" onPress={save} />
+            {/* <Button title="Save" onPress={save} /> */}
         </View>
     );
 }
 
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        padding: 20,
+        backgroundColor: "#E6E8E6"
+      },
+})
 export default EditProfileScreen;

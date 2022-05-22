@@ -3,29 +3,24 @@ import { View, Text, StyleSheet, TextInput, Button, Alert, Pressable } from 'rea
 const DiscoverScreen = ({ navigation }) => {
     return (
         <View style={styles.container}>
-            {/* <Text style={styles.Title}>I am DiscoverScreen</Text> */}
-            
-            {/* <TextInput placeholder="Search"
-                style={styles.input}/> */}
 
             <View style={styles.SubView}>
-                <Pressable onPress={() => Alert.alert('Screen2')}>
+                {/* <Pressable onPress={() => Alert.alert('Screen2')}> */}
+                <Pressable onPress={() => navigation.navigate('Events')}>
                 <Text style={styles.ViewText}>All Events</Text>
                 </Pressable>
-                {/* <Button 
-                onPress={() => navigation.navigate('Screen2')}
-                title ="jsj"
-                /> */}
             </View>
 
             <View style={styles.SubView2}>
-              <Pressable onPress={() => Alert.alert("hello")}>
+              <Pressable onPress={() => navigation.navigate('Student Organisations')}>
                 <Text style={styles.ViewText}> Student Organisations</Text>
               </Pressable>  
             </View>
 
             <View style={styles.SubView3}>
-                <Text style={styles.ViewText}>All Posts</Text>
+              <Pressable onPress={() => Alert.alert('Error page not found')}>
+                <Text style={styles.ViewText}>All Posts</Text>  
+              </Pressable>
             </View>
         </View>
     );
