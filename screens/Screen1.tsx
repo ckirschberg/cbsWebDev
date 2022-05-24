@@ -19,30 +19,30 @@ const Screen1 = ({ navigation }: { navigation: any }) => {
     console.log("chatrooms", chatrooms);
 
     const renderItem = ({ item }: { item: any }) => (
-        <TouchableOpacity>
-            <Text>{item.title}</Text>
-            <Button title="Delete this chatroom" onPress={() => dispatch(deleteChatroom(item.id))} />
+        <TouchableOpacity style={styles.viewStyle}>
+            <Text style={styles.Viewtext}>{item.title}</Text>
+            <Button title="Delete this Fact" onPress={() => dispatch(deleteChatroom(item.id))} />
         </TouchableOpacity>
     );
 
 
     return (
-        <View>
-            <Text>I am screen 1</Text>
-            <Text>Is Christian happy? {isHappy.toString()}</Text>
+        <View style={styles.container}>
+            <Text>Add a random fact about your self</Text>
+            {/* <Text>Is Christian happy? {isHappy.toString()}</Text>
             <Text>How many icecreams should Christians children have {numberOfIcecreams}</Text>
-            <Button title="Go to screen 2" onPress={() => navigation.navigate('Screen2')} />
+            <Button title="Go to screen 2" onPress={() => navigation.navigate('Screen4')} />
             <Button title="Flip happy" onPress={() => dispatch(toggleHappy())} />
 
             <Button title="Give Icecream" onPress={() => dispatch(add())} />
-            <Button title="Steal Icecream" onPress={() => dispatch(subtract())} />
+            <Button title="Steal Icecream" onPress={() => dispatch(subtract())} /> */}
 
             <TextInput placeholder="Chatroom name"
                 style={styles.input}
                 onChangeText={onChangeText}
                 value={text} />
 
-            <Button title='Add chatroom' onPress={() => dispatch(addChatroom(text))} />
+            <Button title='Add Fact' onPress={() => dispatch(addChatroom(text))} />
 
             <FlatList data={chatrooms} renderItem={renderItem} />
         </View>
@@ -56,6 +56,24 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         padding: 10,
     },
+    container: {
+        flex: 1,
+        padding: 20,
+        backgroundColor: "#E6E8E6"
+    },
+    viewStyle: {
+        backgroundColor: '#FFAF87',
+        flex: 1,
+        padding: 10,
+        marginBottom: 10,
+        borderRadius: 5,
+    },
+    Viewtext: {
+        textAlign: 'center',
+        fontSize: 18,
+        fontWeight: '600'
+    }
+
 });
 
 export default Screen1;

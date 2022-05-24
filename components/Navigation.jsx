@@ -1,16 +1,18 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import Screen1 from "./../screens/Screen1";
 import Screen2 from "./../screens/Screen2";
 import Screen3 from "./../screens/Screen3";
 import MenuScreen from "./../screens/MenuScreen";
 import HomeScreen from "./../screens/HomeScreen";
-import DiscoverScreen from "./../screens/DiscoverScreen";
+import DiscoverScreen from "./../screens/DiscoverScreen"
 import SignupScreen from "./../screens/SignupScreen";
 import LoginScreen from "./../screens/LoginScreen";
 import ProfileScreen from "./../screens/ProfileScreen";
 import EditProfileScreen from "./../screens/EditProfileScreen";
+import EventScreen from "./../screens/EventScreen";
+import Screen4 from "./../screens/Screen4";
 import { NavigationContainer } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 
@@ -21,14 +23,13 @@ const Tab = createBottomTabNavigator();
 
 const NavigationComponent = ({ navigation }) => {
     const token = useSelector(state => state.user.idToken)
-
     return (
         <NavigationContainer >
             {token !== undefined ? (
                 // Show the app with all navigation
                 <Tab.Navigator>
                     <Tab.Screen name="Home" component={HomeScreen} />
-                    <Tab.Screen name="Discover" component={DiscoverScreen} />
+                    <Tab.Screen name="Discover" component={DiscoverStack}/>
                     <Tab.Screen name="Chat" component={ChatStack} />
                     <Tab.Screen name="Menu" component={MenuStack} />
                 </Tab.Navigator>
@@ -56,13 +57,22 @@ function MenuStack() {
 function ChatStack() {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="Screen1" component={Screen1} />
-            <Stack.Screen name="Screen2" component={Screen2} />
-            <Stack.Screen name="AndreScreen" component={Screen3} />
+            <Stack.Screen name="Add Facts" component={Screen1} />
+            <Stack.Screen name="Screen4" component={Screen4} />
         </Stack.Navigator>
     );
 }
 
 
+function DiscoverStack() {
+    return (
+        <Stack.Navigator>
+            <Stack.Screen name="Disover" component={DiscoverScreen} />
+            <Stack.Screen name="Events" component={EventScreen} />
+            <Stack.Screen name="Student Organisations" component={Screen3} />
+            <Stack.Screen name="My Organisations" component={Screen2} />
+        </Stack.Navigator>
+    );
+}
 
 export default NavigationComponent;

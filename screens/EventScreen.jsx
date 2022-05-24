@@ -1,35 +1,27 @@
+import { View, Text, Button, StyleSheet, Pressable, Alert } from 'react-native';
 
-import { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, Button, Alert, Pressable, ScrollView } from 'react-native';
-import EventList from './list';
-const DiscoverScreen = ({ navigation }) => {
+const EventScreen = () => {
+
     return (
         <View style={styles.container}>
-
-          <ScrollView>
+            
             <View style={styles.SubView}>
-                <Pressable onPress={() => navigation.navigate('Events')}>
-                <Text style={styles.ViewText}>All Events</Text>
+                <Pressable onPress={() => Alert.alert('Error page not found')}>
+                <Text style={styles.ViewText}>Friday Bar</Text>
                 </Pressable>
             </View>
 
             <View style={styles.SubView2}>
-              <Pressable onPress={() => navigation.navigate('Student Organisations')}>
-                <Text style={styles.ViewText}> Student Organisations</Text>
+              <Pressable onPress={() => Alert.alert('Error page not found')}>
+                <Text style={styles.ViewText}>Walking tour</Text>
               </Pressable>  
             </View>
 
             <View style={styles.SubView3}>
               <Pressable onPress={() => Alert.alert('Error page not found')}>
-                <Text style={styles.ViewText}>All Posts</Text>  
+                <Text style={styles.ViewText}>Trip to Malmö</Text>  
               </Pressable>
-            </View>         
-
-
-          </ScrollView>
-
-
-
+            </View>
         </View>
     );
 }
@@ -46,7 +38,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold"
       },
       SubView: {
-        backgroundColor: "#2F97C1",
+        backgroundColor: "#A88CE3",
         height: 90,
         width: "100%",
         padding: 15,
@@ -63,7 +55,7 @@ const styles = StyleSheet.create({
         fontStyle: "italic",
       },
       SubView2: {
-        backgroundColor: "#0B6E4F",
+        backgroundColor: "#A88CE3",
         height: 90,
         width: "100%",
         padding: 15,
@@ -71,7 +63,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
       },
       SubView3: {
-        backgroundColor: "#EF767A",
+        backgroundColor: "#A88CE3",
         height: 90,
         width: "100%",
         padding: 15,
@@ -86,5 +78,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default DiscoverScreen;
-
+export default EventScreen;

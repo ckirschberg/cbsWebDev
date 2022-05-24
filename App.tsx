@@ -4,6 +4,8 @@ import ReduxThunk from 'redux-thunk';
 import NavigationComponent from './components/Navigation';
 import chatReducer from './store/reducers/ChatReducer';
 import userReducer from "./store/reducers/UserReducer";
+import auth from '@react-native-firebase/auth';
+
 
 const rootReducer = combineReducers({
   chat: chatReducer,
