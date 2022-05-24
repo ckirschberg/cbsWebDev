@@ -1,19 +1,16 @@
 import { View, Text, Button, StyleSheet } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { logout } from '../store/actions/UserActions';
-import * as SecureStore from 'expo-secure-store';
 
 
 const ProfileScreen = ({ navigation }) => {
     const dispatch = useDispatch()
-    // const jenny = SecureStore.getItemAsync('email');
-    const jenny = "henn0"
 
 
     return (
         <View style={styles.container}>
-            <Text>I am ProfileScreen</Text>
-            <Text>{jenny}</Text>
+            <Text style={styles.headingtext}>This is your Profile page</Text>
+            <Text style={styles.subText}>You can either edit your Profile or log out</Text>
             <Button title="Edit Profile" onPress={() => navigation.navigate('EditProfile')} />
             <Button title="Logout" onPress={() => dispatch(logout())} />
         </View>
@@ -26,5 +23,16 @@ const styles = StyleSheet.create({
         padding: 20,
         backgroundColor: "#E6E8E6"
       },
+    headingtext: {
+        color: "#20232a",
+        fontSize: 20,
+        fontWeight: 'bold'
+    },
+    subText: {
+        color: "#20232a",
+        fontSize: 15,
+        fontStyle: "italic",
+        paddingBottom: 8,
+    }
 })
 export default ProfileScreen;

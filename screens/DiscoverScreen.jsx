@@ -1,11 +1,13 @@
-import { View, Text, StyleSheet, TextInput, Button, Alert, Pressable } from 'react-native';
 
+import { useState } from 'react';
+import { View, Text, StyleSheet, TextInput, Button, Alert, Pressable, ScrollView } from 'react-native';
+import EventList from './list';
 const DiscoverScreen = ({ navigation }) => {
     return (
         <View style={styles.container}>
 
+          <ScrollView>
             <View style={styles.SubView}>
-                {/* <Pressable onPress={() => Alert.alert('Screen2')}> */}
                 <Pressable onPress={() => navigation.navigate('Events')}>
                 <Text style={styles.ViewText}>All Events</Text>
                 </Pressable>
@@ -21,7 +23,13 @@ const DiscoverScreen = ({ navigation }) => {
               <Pressable onPress={() => Alert.alert('Error page not found')}>
                 <Text style={styles.ViewText}>All Posts</Text>  
               </Pressable>
-            </View>
+            </View>         
+
+
+          </ScrollView>
+
+
+
         </View>
     );
 }

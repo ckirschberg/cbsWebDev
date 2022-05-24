@@ -1,7 +1,6 @@
 import { View, Text, Button, StyleSheet, Pressable, Alert } from 'react-native';
 
 const EventScreen = () => {
-    // const navigation = useNavigation();
 
     return (
         <View style={styles.container}>

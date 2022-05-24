@@ -72,7 +72,7 @@ export const login = (email, password) => {
         } else {
             await SecureStore.setItemAsync('email', data.email);
             await SecureStore.setItemAsync('token', data.idToken);
-            dispatch({ type: LOGIN, payload: { email: data.email, idToken: data.idToken } })
+            dispatch({ type: SIGNUP, payload: { email: data.email, idToken: data.idToken } })
         }
     };
 }

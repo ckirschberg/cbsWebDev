@@ -6,7 +6,7 @@ import Screen2 from "./../screens/Screen2";
 import Screen3 from "./../screens/Screen3";
 import MenuScreen from "./../screens/MenuScreen";
 import HomeScreen from "./../screens/HomeScreen";
-import DiscoverScreen from "./../screens/DiscoverScreen";
+import DiscoverScreen from "./../screens/DiscoverScreen"
 import SignupScreen from "./../screens/SignupScreen";
 import LoginScreen from "./../screens/LoginScreen";
 import ProfileScreen from "./../screens/ProfileScreen";

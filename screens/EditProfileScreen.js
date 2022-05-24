@@ -1,4 +1,4 @@
-import { View, Text, Button, Alert, StyleSheet } from 'react-native';
+import { View, Text, Button, Alert, StyleSheet, Pressable } from 'react-native';
 import { useSelector } from 'react-redux';
 import Input from './../components/Input'
 import { useState } from 'react';
@@ -16,30 +16,24 @@ const EditProfileScreen = ({ navigation }) => {
     //     if (username & validUsername) {
     //         Alert.alert("hello")
     //     }
-        
+
 
     // }
 
     return (
         <View style={styles.container}>
-            <Text>I am EditProfileScreen</Text>
-
-            <Text>Old Email address</Text>
-            <Text>{username}</Text>
+            <Text style={styles.headingtext}>Your Email address</Text>
+            <Text style={styles.subText}>{username}</Text>
 
 
             <Input
                 label="New Email"
-                inputValue={username}
+                inputValue="Please enter an email address"
                 error="Email cannot be empty."
                 valid={validUsername}
                 setValid={setValidUsername}
             />
-            {/* <Input 
-                label="Password" 
-                error="Password cannot be empty" /> */}
-
-            {/* <Button title="Save" onPress={save} /> */}
+            <Button title='Update' onPress={() => Alert.alert("Currently unable to update profile")} />
         </View>
     );
 }
@@ -50,5 +44,16 @@ const styles = StyleSheet.create({
         padding: 20,
         backgroundColor: "#E6E8E6"
       },
+    headingtext: {
+        color: "#20232a",
+        fontSize: 20,
+        fontWeight: 'bold'
+    },
+    subText: {
+        color: "#20232a",
+        fontSize: 15,
+        fontStyle: "italic",
+        paddingBottom: 8,
+    }
 })
 export default EditProfileScreen;

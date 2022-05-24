@@ -1,4 +1,4 @@
-import { View, Text, Button, Pressable, StyleSheet} from 'react-native';
+import { View, Text, Button, Pressable, StyleSheet, Alert} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const Screen2 = () => {
