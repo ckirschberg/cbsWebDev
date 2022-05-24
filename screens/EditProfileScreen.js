@@ -4,35 +4,40 @@ import Input from './../components/Input'
 import { useState } from 'react';
 
 const EditProfileScreen = ({ navigation }) => {
-    const username = useSelector(state => state.user.username);
+    const username = useSelector(state => state.user.email);
     const [validUsername, setValidUsername] = useState(username !== '')
 
-    const save = () => {
-        // ** if the "form" is valid ** {
-        // save data - we need access to text here...
-        //} else {
-        // display error message
-        //}
-        if (username & validUsername) {
-            Alert.alert("hello")
-        }
+    // const save = () => {
+    //     // ** if the "form" is valid ** {
+    //     // save data - we need access to text here...
+    //     //} else {
+    //     // display error message
+    //     //}
+    //     if (username & validUsername) {
+    //         Alert.alert("hello")
+    //     }
+        
 
-    }
+    // }
 
     return (
         <View style={styles.container}>
             <Text>I am EditProfileScreen</Text>
 
+            <Text>Old Email address</Text>
+            <Text>{username}</Text>
+
+
             <Input
-                label="Username"
+                label="New Email"
                 inputValue={username}
-                error="Username cannot be empty."
+                error="Email cannot be empty."
                 valid={validUsername}
                 setValid={setValidUsername}
             />
-            <Input 
+            {/* <Input 
                 label="Password" 
-                error="Password cannot be empty" />
+                error="Password cannot be empty" /> */}
 
             {/* <Button title="Save" onPress={save} /> */}
         </View>
